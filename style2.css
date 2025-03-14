@@ -1,0 +1,642 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+           /* background-color: rgba(236, 161, 111, 0.37);  */   
+            background-image: url('./assets/fundo.jpg'); /* Caminho da imagem */
+            background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+            background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */                       
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            overflow-x: hidden; 
+            width: 100%;
+        }
+
+        .separator {
+          margin: 0;
+          border: 0;
+          border-top: 3px solid white; /* Espessura e cor do traço */
+          width: 125%; /* Garante que o traço ocupe toda a largura disponível */
+          margin: 20px 0; /* Espaçamento em cima e embaixo */
+          clear: both; /* Garante que o traço não seja afetado por elementos flutuantes */
+        }
+
+        @media screen and (max-width: 600px) {
+.container {
+width: 100%;
+}
+
+.video-container {
+max-width: 100%;
+}
+
+.descricao {
+width: 100%;
+}
+}
+
+.separator {
+  margin: 0;
+  border: 0;
+  border-top: 3px solid white; /* Espessura e cor do traço */
+  width: 100%; /* Garante que o traço ocupe toda a largura disponível */
+  margin: 20px 0; /* Espaçamento em cima e embaixo */
+  clear: both; /* Garante que o traço não seja afetado por elementos flutuantes */
+}
+
+   
+
+.container {  
+ 
+  padding: 20px;
+  margin: 0 auto;
+  width: 90%; /* Evita que fique muito largo no mobile */
+  max-width: 600px; /* Define um limite de largura */
+}
+
+.search-bar {
+  position: relative; /* Necessário para o ícone ficar dentro do campo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-icon {
+  font-size: 20px;
+  color: rgb(10, 10, 10);
+  position: absolute; /* Coloca o ícone dentro do campo */
+  left: 10px; /* Ajuste a posição do ícone dentro do campo */
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente o ícone */
+}
+
+#searchInput {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px 10px 10px 30px; /* Adiciona padding à esquerda para o ícone */
+  border: 1px solid rgb(252, 248, 248);
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+
+
+        .video-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 40px;
+            justify-items: center; /* Centraliza os vídeos */
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            max-width: 580px;
+            border: 2px solid white;
+            box-shadow: 8px 8px 20px rgb(85, 85, 85);
+            border-radius: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+       /* Definindo o estado inicial das divs (fora da tela, com opacidade zero) */
+.video-container, .descricao {
+    opacity: 0;
+    transform: translateY(30px); /* Faz os elementos aparecerem de baixo para cima */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Transição suave */
+}
+
+/* Classe que será adicionada pelo JavaScript para ativar a animação */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0); /* Elemento chega à posição original */
+}
+
+
+
+        .descricao {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            padding: 10px;
+            background-color: #fff;
+            border: 2px solid rgb(63, 63, 63);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(250, 248, 248, 0.932);
+            width: 95%;
+            max-width: 250%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .descricao h2 {
+            font-size: 24px;
+            color: rgb(49, 71, 122);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .descricao p {
+            font-size: 16px;
+            color: rgb(49, 71, 122);
+            line-height: 1.5;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .pdf-button {
+            background-color: rgb(49, 71, 122);
+            color: rgb(49, 71, 122);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .pdf-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Layout Responsivo para Desktop */
+        @media (min-width: 768px) {
+            .video-wrapper {
+                grid-template-columns: repeat(2, 1fr); /* 2 vídeos por linha */
+            }
+        }
+
+        /* Layout para Mobile */
+        @media (max-width: 767px) {
+            .video-wrapper {
+                grid-template-columns: 1fr; /* 1 vídeo por linha */
+                justify-items: center; /* Centraliza os vídeos */
+                gap: 60px; /* Reduz o espaço entre os vídeos no mobile */
+                width: 100%;
+            }
+
+          }
+
+          @media (max-width: 767px) {
+            
+        
+            .container {
+                max-width: 1000px;
+                width: 100%;
+                padding: 20px;
+                margin: 0 auto;
+            }
+        
+            .descricao h2 {
+                font-size: 20px;
+            }
+        
+            .descricao p {
+                font-size: 18px;
+            }
+        
+            .pdf-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        
+            /* Ajuste para centralizar a caixa de descrição */
+            .descricao {
+                display: block;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                max-width: 600%;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            .separator {
+              margin: 0;
+              border: 0;
+              border-top: 3px solid white; /* Espessura e cor do traço */
+              width: 100%; /* Garante que o traço ocupe toda a largura disponível */
+              margin: 20px 0; /* Espaçamento em cima e embaixo */
+              clear: both; /* Garante que o traço não seja afetado por elementos flutuantes */
+            }
+
+            .search-bar {
+              width: 100%;
+              margin: auto 0 ;
+                            
+              position: relative; /* Necessário para o ícone ficar dentro do campo */
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 20px;
+            }
+
+
+            #searchInput {
+             
+              width: 120%;
+              max-width: 600px;
+              padding: 10px 10px 10px 48px; /* Adiciona padding à esquerda para o ícone */
+              border: 1px solid rgb(252, 248, 248);
+              border-radius: 20px;
+              font-size: 16px;
+            }
+
+            
+
+            body {
+              background: rgb(10, 10, 10);
+              
+            }
+
+            .container {  
+ 
+              
+              margin: 0 ;
+              width: 90%; /* Evita que fique muito largo no mobile */
+              max-width: 1200px; /* Define um limite de largura */
+            }
+
+            .separator {
+              border-top: 3px solid white; /* Espessura e cor do traço */
+             
+            }
+
+            .video-wrapper {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+                    
+        
+  
+        }
+        
+        
+
+          
+   
+
+        footer {
+            color: rgb(241, 238, 238);
+            text-align: center;
+        }
+
+        #social-links {
+      padding-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      font-size: 24px;
+
+      -webkit-tap-highlight-color: transparent; /* Remove o flash azul em dispositivos Android */
+      outline: none; /* Remove o contorno de foco */
+    }
+
+    #social-links a {
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      border-radius: 50%;
+      color: #fff;
+      background: #555;
+      transition: background 0.2s;
+
+      -webkit-tap-highlight-color: transparent; /* Remove o flash azul em dispositivos Android */
+      outline: none; /* Remove o contorno de foco */
+    }
+
+    #social-links a:hover {
+      background: #474b4f;
+    }
+
+
+        .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      width: 50px;
+      height: 50px;
+      background-color: rgb(46, 49, 51);
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      font-size: 24px;
+      border-radius: 50%;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+
+    .back-to-top:hover {
+      opacity: 1;
+    }
+
+    .animated-div {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animated-div.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .pdf-button {
+      background-color: rgb(49, 71, 122);
+      color: #fff;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .pdf-button:hover {
+      background-color: rgba(49, 71, 122, 0.699);
+    }
+
+
+    .typing-container {
+ display: block;
+ position: fixed;
+ margin-top: 320px;
+ margin-right: 700px; 
+ font-weight: bold;
+ color: rgb(138, 136, 136);
+       }
+
+
+@media (max-width: 768px) { 
+
+
+.typing-container {
+position: static;
+transform: none;
+width: 100%;
+margin-top: 20px;
+}
+}
+
+
+/* CONTINUA CSS */
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+
+
+
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 300px;
+  height: 200px;
+  margin: auto;
+  border-radius: 50px; 
+  border: none;
+  z-index: 1;
+}
+
+/* Centraliza a .box na tela */
+.box {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative; /* Para manter o contexto de posicionamento */
+}
+
+/* Estilização da img-box */
+.img-box {
+  background-color: rgba(24, 29, 41, 0.764);
+  width: 50%;
+  padding: 20px;
+/* border-radius: 20px; */
+
+}
+
+/* Estilização da imagem fixa e centralizada */
+.img-box img {
+  position: fixed;
+  top: 35%;              /* Centraliza verticalmente */
+  left: 30%;             /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta o ponto de referência para o centro */
+  width: 15%;            /* Define um tamanho proporcional */
+  max-width: 300px;      /* Define um tamanho máximo */
+  border-radius: 70px;
+  border: 5px solid #ccc; /* Cor e espessura da borda */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adiciona um leve sombreamento */
+}
+
+
+
+
+
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .img-box img {
+    
+    width: 50%;          /* Reduz o tamanho da imagem em telas menores */
+  }
+}
+
+.form-box {
+    background-color: rgba(24, 29, 41, 0.877);  
+    /*backdrop-filter: blur(40px);*/
+    padding: 30px 40px;
+    width: 50%;
+    z-index: 1;
+   /* border-radius: 20px; */ 
+  }
+
+.form-box2 .anamnese {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+/* ESTOU MEXENDO AQUI */
+
+
+@media (max-width: 930px) {
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-box {
+      display: none;
+    }
+  
+    .img2 .borboleta {
+      display: none;
+    }
+  
+   
+    .form-box {
+    
+      width: 100%;   
+      border-radius: 0;
+    }
+
+    .container {
+      display: block;
+      justify-content: center;
+      align-items: center;
+    }
+
+   
+  }
+  
+
+
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(49, 71, 122);
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  font-size: 24px;
+  border-radius: 50%;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+.back-to-top {
+  -webkit-tap-highlight-color: transparent; /* Remove o flash azul em dispositivos Android */
+  outline: none; /* Remove o contorno de foco */
+}
+
+.back-to-top:hover {
+  opacity: 9;
+}
+
+
+
+.instagram-button {
+    position: fixed;
+    bottom: 80px;
+    right: 22px;
+    z-index: 1000;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  
+  .instagram-button {
+    -webkit-tap-highlight-color: transparent; /* Remove o flash azul em dispositivos Android */
+    outline: none; /* Remove o contorno de foco */
+  }
+  
+  #instagramButton {
+    -webkit-tap-highlight-color: transparent; /* Remove o flash azul em dispositivos Android */
+    outline: none; /* Remove o contorno de foco */
+  }
+  
+  .instagram-button img {
+    width: 45px;
+    height: 45px;
+  }
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 767px) {
+  .instagram-button {
+    bottom: 80px;
+    right: 23px;
+  }
+
+  .instagram-button img {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.instagram-button img {
+  -webkit-tap-highlight-color: transparent; /* Remove o flash azul em dispositivos Android */
+  outline: none; /* Remove o contorno de foco */
+}
+
+footer {
+    font-weight: bold;
+    border: solid 4px rgba(68, 68, 64, 0.462);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(8, 8, 8, 0.733);
+  }
+  
+  footer,
+  .amancio {
+    padding: 5px 25px 5px 25px;
+    background: none;
+    margin-bottom: -100px;
+  }
+
+
+
+  @media (max-width: 768px) {
+    .conteudo {
+      width: 100%;
+      max-width: 600px; /* Ajuste conforme necessário */
+      margin: 0;
+      padding: 0px;
+  }
+}
+
+
+
+a {
+  -webkit-tap-highlight-color: transparent; /* Remove o flash azul em dispositivos Android */
+  outline: none; /* Remove o contorno de foco */
+}
+
+
+details {
+  color: rgb(49, 71, 122);
+}

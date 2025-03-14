@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style2.css">
+    <title>Aulas de Teclado</title>
+    <style>
+/* Estilos gerais */
+/* Ícone do menu para mobile */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: rgb(24, 29, 41);
+  color: white;
+  
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed; /* Cabeçalho fixo na tela */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+
+
+
+.logo {
+  font-size: 15px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra preta suave */
+  
+}
+
+.menu {
+  display: flex;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul li {
+  display: inline;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  transition: color 0.3s ease;
+}
+
+.menu ul li a:hover {
+  color: rgb(103, 110, 131);
+}
+/*.menu-icon {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+} */
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  position: relative; /* Mantém dentro do header */
+  z-index: 101;
+  width: 30px;
+  height: 30px;
+
+  -webkit-tap-highlight-color: transparent; /* Remove o flash azul em dispositivos Android */
+    outline: none; /* Remove o contorno de foco */
+}
+
+.menu-icon div {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Ícone "X" para fechar o menu */
+/*.close-icon {
+  display: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  position: fixed;
+  top: 65px;
+  right: 65px;
+  cursor: pointer;
+  z-index: 101;
+} */
+
+.close-icon {
+  display: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute; /* Permanece sobre o hambúrguer */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 102;
+
+  -webkit-tap-highlight-color: transparent; /* Remove o flash azul em dispositivos Android */
+    outline: none; /* Remove o contorno de foco */
+}
+
+@media (min-width: 769px) {
+  .menu-icon {
+    display: none; /* Esconde no desktop */
+  }
+}
+
+
+.close-icon:hover {
+  color: rgb(103, 110, 131);
+}
+
+/* Quando o menu está aberto, o "X" aparece no lugar do hambúrguer */
+.menu.active ~ .menu-icon .close-icon {
+  display: block;
+}
+
+/* Esconde as barras do hambúrguer quando o menu está aberto */
+.menu.active ~ .menu-icon div {
+  display: none;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+
+
+  /* Definindo o menu inicialmente escondido acima da tela */
+.menu {
+  position: fixed;
+  top: -100%; /* Inicialmente escondido */
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo do menu */
+  padding: 20px;
+  transition: top 0.3s ease-in-out; /* Transição suave */
+  z-index: 1;
+}
+
+/* Quando o menu está aberto */
+.menu.active {
+  top: 0; /* Menu desliza para baixo */
+}
+
+
+  
+  .menu ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu ul li {
+    padding: 10px 0;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+}
+
+       h1 {
+        text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(253, 251, 251);
+   /* margin-top: 30px;
+    margin-bottom: 20px; */
+    text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.7); 
+       } 
+    
+       .novas-aulas {
+    font-size: 30px;
+    font-family: cursive;
+    color: rgb(247, 246, 242);
+    text-align: center;
+    margin: 20px 0;
+    animation: pulse 2s infinite; /* Animação infinita */
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 0.8; /* Começa com opacidade menor */
+      transform: scale(1); /* Tamanho normal */
+    }
+    50% {
+      opacity: 1; /* Fica totalmente visível */
+      transform: scale(1.1); /* Aumenta o tamanho */
+    }
+    100% {
+      opacity: 0.8; /* Retorna à opacidade inicial */
+      transform: scale(1); /* Retorna ao tamanho original */
+    }
+  }
+    </style>
+
+       </head>
+<body>
+    
+    
+  
+    <div class="box">
+      
+        <div class="img-box">
+          <img src="./assets/capa.jpg" />    <br> <br>        
+
+          <div class="typing-container" id="typing-container">
+        <span id="typing-text"></span>
+      </div>
+        
+        </div>       
+        
+        
+        <div class="form-box">
+        <!-- <div id="profile">
+            <img src="./assets/img.png" alt="" />
+            
+          </div>--> 
+           
+          
+
+          <div class="form-box2 ">
+            
+            <div id="profile2">
+              <img src="./assets/logo1.png" alt="" />        
+            </div> 
+
+
+            <div class="container conteudo">
+                <div class="header">
+                    <div class="logo" style="text-align: center">PROF. AMANCIO</div>
+                    <div class="menu-icon" id="menu-icon">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <span class="close-icon">X</span> <!-- Ícone de fechar -->
+                    </div>
+                    <nav class="menu" id="menu">
+                      <ul>
+                        <li><a href="#modulo1">MÓDULO 1 </a></li> 
+                        <li><a href="#modulo2">MÓDULO 2</a></li>
+                        <li><a href="#modulo3">MÓDULO 3</a></li>
+                        
+                        
+                      </ul>
+                    </nav>
+                  </div>
+        <br>
+                <!-- Barra de Pesquisa -->
+             <!--<div class="search-bar">
+                    <span class="search-icon">🔍</span> 
+                    <input type="text" id="searchInput" placeholder="Pesquise a Aula que Deseja Assistir...">
+                </div>-->    
+                 
+            
+                <p class="novas-aulas">Novas aulas toda semana!</p>
+       
+                <div class="video-wrapper">
+                    
+                    <section id="modulo1">
+                    <!-- Video 1 -->
+                    <h1> MÓDULO 1</h1>
+                    <div class="video-container fade-in" id="video1">
+                        <!-- O iframe será carregado via JavaScript -->
+                    </div>
+                    <div class="descricao fade-in" data-title="Aula 1">
+                        <h2>Aula 1</h2>
+                        <p >Seja muito Bem-vindo(a) ao Curso de Teclado! Espero que você aproveite bem essa jornada! 
+                            Esta primeira aula é um vídeo de apresentação, boas vindas e também conto um pouco da  
+                            minha história, de como aprendi a tocar teclado. Para cada video aula teremos
+                            um pdf pra baixar. <br> <details > <summary> 🎸 "Aprender teclado vai ser uma jornada incrível,... </summary>  
+                            e cada acorde que você aprende te leva mais perto de tocar as músicas 
+                            que você ama. Não desista, mesmo quando parecer difícil de
+                            aprender. Cada prática, cada erro e cada acerto fazem 
+                            parte do processo. Com dedicação, as músicas que hoje parecem impossíveis 
+                            vão fluir naturalmente. Confie no seu ritmo, mantenha o foco e 
+                            lembre-se: o som que você está criando é único e só seu!" 🎶
+                            Continue tocando, você vai surpreender até a si mesmo! 🚀✨ </details>
+                        </p>
+                    
+                    </div>
+                 <br><br>
+                <hr class="separator"> <br><br>   
+
+                    <!-- Video 2 -->
+                    <div class="video-container fade-in" id="video2">
+                        <!-- O iframe será carregado via JavaScript -->
+                    </div>
+                    <div class="descricao" data-title="Aula 2">
+                        <h2>Aula 2</h2>
+                        <p>Nesta Segunda aula vamos aprender o que é sensitivvo, sustain, oitavas, teclas pretas e acorde fundamental e 
+                            aprender os primeiros acordes. </p>
+                        <button class="pdf-button" data-pdf="pdfs/aula2teclado.pdf" data-name="aula2teclado.pdf">
+                        Baixar PDF da Aula 2
+                      </button>
+        
+                    </div>
+                    <br><br>
+                    
+                    <hr class="separator"> <br><br>   
+
+                    <!-- Video 3 -->
+                    <div class="video-container fade-in" id="video3">
+                        <!-- O iframe será carregado via JavaScript -->
+                    </div>
+                    <div class="descricao" data-title="Aula 3">
+                        <h2>Aula 3</h2>
+                        <p>Nesta aula vamos aprender os acordes invertidos na Primeira inversão entre outras dicas importantes. </p>
+                        <button class="pdf-button" data-pdf="pdfs/aula3teclado.pdf" data-name="aula3teclado.pdf">
+                        Baixar PDF da Aula 3
+                      </button>
+        
+                    </div>
+                    <br><br>
+
+                    <hr class="separator"> <br><br>   
+
+                    <!-- Video 4 -->
+                    <div class="video-container fade-in" id="video4">
+                        <!-- O iframe será carregado via JavaScript -->
+                    </div>
+                    <div class="descricao" data-title="Aula 4">
+                        <h2>Aula 4</h2>
+                        <p>Nesta aula vamos aprender os acordes invertidos na Segunda inversão entre outras dicas importantes. </p>
+                        <button class="pdf-button" data-pdf="pdfs/aula4teclado.pdf" data-name="aula4teclado.pdf">
+                        Baixar PDF da Aula 4
+                      </button>
+        
+                    </div>
+                    <br><br>
+
+                    <hr class="separator"> <br><br>   
+
+                    <!-- Video 5 -->
+                    <div class="video-container fade-in" id="video5">
+                        <!-- O iframe será carregado via JavaScript -->
+                    </div>
+                    <div class="descricao" data-title="Aula 5">
+                        <h2>Aula 5</h2>
+                        <p>Nesta aula vamos treinar mudanças de acordes, variando entre Fundamental, Primeira e Segunda Inversão. </p>
+                        <button class="pdf-button" data-pdf="pdfs/aula5teclado.pdf" data-name="aula5teclado.pdf" disabled>
+                        Aula 5 sem PDF 
+                      </button>
+        
+                    </div>
+                    <br><br>
+
+                    <hr class="separator"> <br><br>   
+
+                    <!-- Video 6 -->
+                    <div class="video-container fade-in" id="video6">
+                        <!-- O iframe será carregado via JavaScript -->
+                    </div>
+                    <div class="descricao" data-title="Aula 6">
+                        <h2>Aula 6</h2>
+                        <p>Nesta aula vamos fazer a escala de Dó com a mão direita e esquerda da maneira correta </p>
+                        <button class="pdf-button" data-pdf="pdfs/aula6teclado.pdf" data-name="aula6teclado.pdf">
+                        Baixar PDF da Aula 6
+                      </button>
+        
+                    </div>
+                    <br><br>
+
+                  
+                                
+               
+            </section>          
+                
+                <section id="modulo2">
+              <p style="text-align: center; font-weight: bold; top: 50px; color:rgb(41, 40, 40);">MÓDULO EM CONSTRUÇÃO</p>
+            </section>
+            <section id="modulo3">
+              <p style="text-align: center; font-weight: bold; top: 50px; color:rgb(41, 40, 40);">MÓDULO EM CONSTRUÇÃO</p>
+            </section>
+
+            
+                </div>
+            </div>
+        
+            <footer>
+                <div id="social-links">
+                  <a href="https://instagram.com/junior.amancio" target="_blank"><ion-icon name="logo-instagram"></ion-icon
+                    ></a>
+                  <a href="https://youtube.com/amancio131079" target="_blank"><ion-icon name="logo-youtube"></ion-icon
+                    ></a>
+                  <a href="https://facebook.com" target="_blank"></i><ion-icon name="logo-facebook"></ion-icon
+                    ></a>
+                  <a href="https://wa.me/5581996174799" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                </div>
+                <br><p >&copy; 2025 Plataforma criado por Amancio JR. <br> </p> 
+              </footer>
+            
+        
+              
+          <a href="#" class="back-to-top" id="back-to-top">&#8679;</a>
+        
+          <script
+              type="module"
+              src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+            ></script>
+            <script
+              nomodule
+              src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+            ></script>
+        
+            <script src="https://www.youtube.com/iframe_api"></script>
+
+            <script>
+                let currentPlayers = {}; // Armazenar os players atuais
+        
+                // IDs dos vídeos do YouTube
+                const videoIds = ["CeGaRLRuFdo", "4jVY_lT2fbI", "4Vy327f1qDU", "O0S1mchiz7E", "bvxb5lE9Hi0", "LGjWwFoLlDo"];
+        
+                // Função para carregar vídeos do YouTube no container
+                function loadYouTubeVideo(containerId, videoId) {
+                    const player = new YT.Player(containerId, {
+                        height: '315',
+                        width: '340',
+                        videoId: videoId,
+                        events: {
+                            'onReady': function(event) {
+                                console.log("Player pronto:", event.target.getVideoUrl());
+                                currentPlayers[containerId] = event.target;
+                            },
+                            'onStateChange': function(event) {
+                                console.log("Estado do player mudou para", event.data);
+                                onPlayerStateChange(event, event.target);
+                            }
+                        }
+                    });
+                }
+        
+                // Função chamada quando o estado do player muda
+                function onPlayerStateChange(event, currentPlayer) {
+                    if (event.data === YT.PlayerState.PLAYING) {
+                        console.log("Iniciando a reprodução, pausando outros players...");
+                        pauseOtherPlayers(currentPlayer);
+                    }
+                }
+        
+                // Função para pausar outros players
+                function pauseOtherPlayers(currentPlayer) {
+                    console.log("Pausando outros players...");
+                    for (const containerId in currentPlayers) {
+                        if (currentPlayers.hasOwnProperty(containerId)) {
+                            const player = currentPlayers[containerId];
+                            if (player && player !== currentPlayer) {
+                                console.log("Pausando o player", player.getVideoUrl());
+                                player.pauseVideo();
+                            }
+                        }
+                    }
+                }
+        
+                // Iniciar vídeos quando o documento estiver carregado
+                window.onload = function() {
+                    if (typeof YT !== 'undefined' && YT.loaded) {
+                        console.log("API do YouTube está pronta");
+                        const videoContainers = document.querySelectorAll(".video-container");
+                        videoContainers.forEach((container, index) => {
+                            loadYouTubeVideo(container.id, videoIds[index % videoIds.length]);
+                        });
+                    } else {
+                        console.error("A API do YouTube não está carregada.");
+                    }
+                };
+        
+                // Função de busca
+                document.getElementById("searchInput").addEventListener("input", function() {
+    const query = this.value.toLowerCase().trim(); // Remover espaços extras da busca
+    const descriptions = document.querySelectorAll(".descricao");
+    const videoWrapper = document.querySelector(".video-wrapper");
+    
+    // Esconder todas as aulas inicialmente
+    descriptions.forEach(function(descricao) {
+        descricao.style.display = "none"; // Esconde todas as descrições
+        descricao.previousElementSibling.style.display = "none"; // Esconde todos os vídeos
+    });
+
+    // Armazenar as seções correspondentes à pesquisa
+    let matchingSections = [];
+
+    // Filtrar as aulas com base no termo de pesquisa
+    descriptions.forEach(function(descricao) {
+        const title = descricao.getAttribute("data-title").toLowerCase();
+        if (title.includes(query)) {
+            descricao.style.display = "block"; // Exibe a descrição correspondente
+            descricao.previousElementSibling.style.display = "block"; // Exibe o vídeo correspondente
+            matchingSections.push(descricao.parentElement); // Armazenar a seção da aula
+        }
+    });
+
+    // Remover os separadores (hr) quando há pesquisa
+    const separators = document.querySelectorAll(".separator");
+    separators.forEach(separator => separator.style.display = "none");
+
+    // Reorganizar as seções correspondentes, colocando no topo da página
+    matchingSections.forEach(function(section) {
+        videoWrapper.insertBefore(section, videoWrapper.firstChild); // Move a seção para o topo do wrapper
+    });
+
+    // Forçar a rolagem para o topo da página
+    window.scrollTo(0, 0); // Garante que a tela vai para o topo automaticamente
+});
+
+
+
+ 
+
+
+
+            </script>
+        
+        <script>
+            // Função para exibir "Voltar ao Topo"
+            document.addEventListener("DOMContentLoaded", () => {
+              const backToTopButton = document.getElementById("back-to-top");
+              window.addEventListener("scroll", () => {
+                backToTopButton.style.display = window.pageYOffset > 300 ? "block" : "none";
+              });
+              backToTopButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              });
+            });
+          </script>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Seleciona todas as divs que você deseja animar
+                const elements = document.querySelectorAll('.video-container, .descricao');
+        
+                // Função para adicionar a classe de fade-in
+                const fadeInOnScroll = (entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in'); // Ativa a animação
+                            observer.unobserve(entry.target); // Remove o observador após a animação
+                        }
+                    });
+                };
+        
+                // Cria um observer para observar quando os elementos entram na tela
+                const observer = new IntersectionObserver(fadeInOnScroll, {
+                    threshold: 0.5 // Define que 50% do elemento precisa estar visível para ativar a animação
+                });
+        
+                // Observa todos os elementos
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            });
+        </script>
+        
+        <script>
+            // Adicione o evento de clique nos botões para baixar o PDF
+            const pdfButtons = document.querySelectorAll(".pdf-button")
+        
+            pdfButtons.forEach((button) => {
+              button.addEventListener("click", () => {
+                const pdfUrl = button.getAttribute("data-pdf")
+                const fileName = button.getAttribute("data-name")
+        
+                const link = document.createElement("a")
+                link.href = pdfUrl
+                link.download = fileName
+                document.body.appendChild(link)
+                link.click()
+                document.body.removeChild(link)
+              })
+            })
+          </script>    
+
+         <script>// 3. Texto animado
+         // 3. Texto animado fixo
+const typingContainer = document.getElementById("typing-container");
+const typingText = document.getElementById("typing-text");
+
+if (typingContainer && typingText) {
+  const textToType = "A música é uma jornada, e cada nota que você toca é um passo à frente. No início, pode parecer desafiador, mas lembre-se: todo grande músico já foi um iniciante. A paciência e a prática transformam pequenos erros em belas melodias. Confie no seu progresso, toque com o coração e sinta a evolução a cada acorde. A persistência é a chave para fazer sua música ecoar no mundo. Não desista, sua jornada musical está apenas começando!";
+  
+  const professorName = `<span id="professor-name" style="display: block; margin-top: 20px; font-weight: bold;">Prof. Júnior Amancio</span>`;
+  
+  let index = 0;
+  const speed = 100;
+
+  function typeText() {
+    if (index < textToType.length) {
+      typingText.innerHTML += textToType.charAt(index);
+      index++;
+      setTimeout(typeText, speed);
+    } else {
+        // Adiciona o nome do professor após a animação do texto
+        setTimeout(() => {
+            typingText.innerHTML += professorName;
+        }, speed * 5);
+    }
+
+  }
+
+  // Inicia a animação quando o elemento aparece na tela
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        typeText();
+        observer.unobservee(ntry.target); // Para de observar após ativar a animação
+      }
+    });
+  }, { threshold: 1.0 });
+
+  observer.observe(typingContainer);
+}
+
+
+
+            </script>
+   
+
+<script>
+  // Evento de clique no ícone do menu
+const menuIcon = document.getElementById("menu-icon");
+const menu = document.getElementById("menu");
+
+menuIcon.addEventListener("click", function () {
+  this.classList.toggle("open");
+  menu.classList.toggle("open");
+});
+
+// Fecha o menu ao clicar fora dele
+document.addEventListener("click", function (event) {
+  if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+    menu.classList.remove("open");
+    menuIcon.classList.remove("open");
+  }
+});
+
+// Evento de clique nos links do menu para rolar suavemente até a seção e exibir apenas o conteúdo correspondente
+const menuLinks = document.querySelectorAll(".menu ul li a");
+const sections = document.querySelectorAll("section");
+
+menuLinks.forEach((link) => {
+  link.addEventListener("click", function (event) {
+    event.preventDefault();
+    const sectionId = this.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(sectionId);
+
+    if (targetSection) {
+      // Esconde todas as seções
+      sections.forEach((section) => {
+        section.style.display = "none";
+      });
+
+      // Mostra apenas a seção correspondente
+      targetSection.style.display = "block";
+
+      window.scrollTo({
+        top: targetSection.offsetTop - 50,
+        behavior: "smooth",
+      });
+    }
+
+    // Fecha o menu após o clique (apenas em dispositivos móveis)
+    if (window.innerWidth <= 768) {
+      menu.classList.remove("open");
+      menuIcon.classList.remove("open");
+    }
+  });
+});
+
+// Garante que apenas a primeira seção esteja visível ao carregar a página
+window.addEventListener("load", function () {
+  sections.forEach((section, index) => {
+    if (index === 0) {
+      section.style.display = "block";
+    } else {
+      section.style.display = "none";
+    }
+  });
+});
+
+
+
+</script>
+
+
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+  const menuIcon = document.getElementById("menu-icon");
+  const menu = document.getElementById("menu");
+  const closeIcon = document.querySelector(".close-icon");
+
+  // Alternar menu ao clicar no hambúrguer
+  menuIcon.addEventListener("click", function () {
+    menu.classList.toggle("active");
+
+    if (menu.classList.contains("active")) {
+      closeIcon.style.display = "block"; // Mostra o X
+      menuIcon.querySelectorAll("div").forEach(div => div.style.display = "none"); // Esconde barras
+    } else {
+      closeIcon.style.display = "none"; // Esconde o X
+      menuIcon.querySelectorAll("div").forEach(div => div.style.display = "block"); // Mostra barras
+    }
+  });
+
+  // Fecha o menu ao clicar no "X"
+  closeIcon.addEventListener("click", function (event) {
+    event.stopPropagation(); // Impede que o clique se propague para o ícone do menu
+    menu.classList.remove("active");
+    closeIcon.style.display = "none"; // Esconde o X
+    menuIcon.querySelectorAll("div").forEach(div => div.style.display = "block"); // Mostra barras
+  });
+
+  // Fecha o menu ao clicar fora dele
+  document.addEventListener("click", function (event) {
+    if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+      menu.classList.remove("active");
+      closeIcon.style.display = "none"; // Esconde o X
+      menuIcon.querySelectorAll("div").forEach(div => div.style.display = "block"); // Mostra barras
+    }
+  });
+});
+
+
+</script>
+
+<script>
+   
+
+  // Adicionando o efeito de deslizar para cima e para baixo
+  let touchStartY = 0;
+  let touchEndY = 0;
+
+  menu.addEventListener("touchstart", function (event) {
+    touchStartY = event.touches[0].clientY; // Pega a posição inicial do toque
+  });
+
+  menu.addEventListener("touchend", function (event) {
+    touchEndY = event.changedTouches[0].clientY; // Pega a posição final do toque
+
+    if (touchStartY - touchEndY > 100) { // Deslizou para baixo
+      menu.classList.add("active");
+    } else if (touchEndY - touchStartY > 100) { // Deslizou para cima
+      menu.classList.remove("active");
+    }
+  });
+
+
+</script>
+<script>
+
+
+
+</script>
+
+
+            </body>
+          <br><br><br><br><br><br>
+</html>
