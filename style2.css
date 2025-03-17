@@ -14,7 +14,7 @@ html, body {
             padding: 0;
            /* background-color: rgba(236, 161, 111, 0.37);  */   
             background-image: url('./assets/fundo.jpg'); /* Caminho da imagem */
-            background-size: cover; /* Ajusta a imagem para cobrir todo o elemento */
+            background-size: 100%; /* Ajusta a imagem para cobrir todo o elemento */
             background-position: center; /* Centraliza a imagem */
             background-repeat: no-repeat; /* Evita repetição da imagem */
             background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */                       
