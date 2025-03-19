@@ -12,9 +12,9 @@ html, body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color:rgb(43, 52, 71) ;
+            background-color:rgb(43, 52, 71) ;           
            /* background-color: rgba(236, 161, 111, 0.37);  */   
-            background-image: url('./assets/fundo.jpg'); /* Caminho da imagem */
+            background-image: url('./assets/fundo.jpg'); /* Caminho da imagem */           
             background-size: 80%; /* Ajusta a imagem para cobrir todo o elemento */
             background-position: center; /* Centraliza a imagem */
             background-repeat: no-repeat; /* Evita repetição da imagem */
